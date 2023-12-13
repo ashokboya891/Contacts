@@ -15,6 +15,8 @@ builder.Services.AddIdentityService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<ITokenService,TokenServices>();
+builder.Services.AddScoped<IBikeRepository,BikesRepository>();
+
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
 builder.Services.AddCors(opt =>
