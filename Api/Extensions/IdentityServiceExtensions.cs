@@ -24,7 +24,8 @@ namespace Api.Extensions
                 opt.UseSqlite(config.GetConnectionString("Idcon"));
             });
             services.AddIdentityCore<AppUser>(opt=>{
-
+ 
+ 
             }).AddEntityFrameworkStores<AppIdentityDbContext>()
             .AddSignInManager<SignInManager<AppUser>>();
             services.AddAuthentication();
