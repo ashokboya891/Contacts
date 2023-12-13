@@ -721,7 +721,8 @@
       },
       "Core/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.14"
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.14",
+          "System.IdentityModel.Tokens.Jwt": "7.0.3"
         },
         "runtime": {
           "Core.dll": {}

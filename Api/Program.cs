@@ -1,5 +1,7 @@
 using Api.Extensions;
 using Core.Entites.Identity;
+using Core.Interfaces;
+using Core.services;
 using infrastructure.Identity;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
@@ -12,14 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddIdentityService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-
+builder.Services.AddScoped<ITokenService,TokenServices>();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCors(opt=>
+builder.Services.AddCors(opt =>
                 {
-                opt.AddPolicy("CorsPolicy",policy=>
-                    {
-                        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
-                    });
+                    opt.AddPolicy("CorsPolicy", policy =>
+                        {
+                            policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                        });
                 });
 var app = builder.Build();
 
