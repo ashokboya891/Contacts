@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UCpMa8uIhk947WgQRPGymwegwGUX1FcGKoC+4DTKvtGyqeMHGOx5XjXjQ/wSfY1E06EKSn5RaF9b7xWJPVx5MA==",
+  "dgSpecHash": "XNGbOIL0hFOe+A9GYLtP1GTpSkhdMp875L9ofcJE8RF2dnUWyf6H1CRf6FVKXk+5ePpIMwCHni30YMQGewvvaA==",
   "success": true,
   "projectFilePath": "C:\\Users\\91891\\Desktop\\Contacts\\Api\\Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\91891\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\91891\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -24,6 +26,7 @@
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\7.0.14\\microsoft.aspnetcore.identity.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.14\\microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\91891\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.14\\microsoft.data.sqlite.core.7.0.14.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.14\\microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
     "C:\\Users\\91891\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.14\\microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",

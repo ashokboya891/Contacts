@@ -86,3 +86,5 @@ C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\System.IdentityModel.Tokens
 C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\91891\Desktop\Contacts\Api\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

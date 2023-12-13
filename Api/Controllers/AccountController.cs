@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Api.DTOs;
 using Api.Extensions;
+using AutoMapper;
 using Core.Entites.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -18,9 +19,11 @@ namespace Api.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
         public AccountController(UserManager<AppUser> userManager,
-        SignInManager<AppUser> signInManager,ITokenService tokenService)
+        SignInManager<AppUser> signInManager,ITokenService tokenService,IMapper mapper)
         {
+            _mapper = mapper;
             _tokenService = tokenService;
             _signInManager = signInManager;
             _userManager = userManager;
@@ -33,6 +36,8 @@ namespace Api.Controllers
             if(user==null) return Unauthorized("Login credentials are required");
             var result=await _signInManager.CheckPasswordSignInAsync(user,loginDto.Password,false);
             if(!result.Succeeded) return Unauthorized("your are not authorized");
+            // var userDto = _mapper.Map<UserDto>(user);
+            // return userDto;
             return new UserDto
             {
                 Email=user.Email,
@@ -66,6 +71,16 @@ namespace Api.Controllers
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery]string email)
         {
             return await _userManager.FindByEmailAsync(email)!=null;
+        }
+        [HttpPut("address")]
+        public async Task<ActionResult<DetailsDto>> UpdateUserAddress(DetailsDto details)
+        {
+            var user= await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+            user.Details=_mapper.Map<DetailsDto,Details>(details);
+            var result= await _userManager.UpdateAsync(user);
+            if(result.Succeeded) return Ok(_mapper.Map<Details,DetailsDto>(user.Details));
+            return BadRequest("Problem updating user");
+
         }
      
     }

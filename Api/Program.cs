@@ -16,6 +16,7 @@ builder.Services.AddIdentityService(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<ITokenService,TokenServices>();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
 builder.Services.AddCors(opt =>
                 {
                     opt.AddPolicy("CorsPolicy", policy =>
