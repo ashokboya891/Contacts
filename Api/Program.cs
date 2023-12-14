@@ -30,8 +30,8 @@ builder.Services.AddCors(opt =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseMiddleware<ExceptionMiddleWare>();
 app.UseCors("CorsPolicy");
+app.UseMiddleware<ExceptionMiddleWare>();
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 if (app.Environment.IsDevelopment())
 {

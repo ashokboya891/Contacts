@@ -9,7 +9,7 @@ namespace Api.Errors
     {
         public ApiException(int statusCode, string message = null,string details=null) : base(statusCode, message)
         {
-            Details=Details;
+            Details=details;
         }
         public string Details{set;get;}
 
