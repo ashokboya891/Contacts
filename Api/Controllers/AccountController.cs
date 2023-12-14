@@ -29,6 +29,7 @@ namespace Api.Controllers
             _userManager = userManager;
 
         }
+        
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -72,6 +73,7 @@ namespace Api.Controllers
         {
             return await _userManager.FindByEmailAsync(email)!=null;
         }
+        
         [HttpPut("address")]
         public async Task<ActionResult<DetailsDto>> UpdateUserAddress(DetailsDto details)
         {

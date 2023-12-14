@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
 using Api.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace Api.Controllers
     {
       return "ashok";
     }
+    [Authorize]
     [HttpGet("AllBikes")]
     public async Task<ActionResult<IReadOnlyList<Bikes>>> GetBikes()
     {

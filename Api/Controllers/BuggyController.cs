@@ -17,8 +17,8 @@ namespace Api.Controllers
             _bikesDbContext = bikesDbContext;
 
         }
-        [HttpGet("test-Auth")]
         [Authorize]
+        [HttpGet("testauth")]
         public ActionResult<string> GetSecret()
         {
             return "secret";

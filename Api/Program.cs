@@ -13,40 +13,39 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddApplicationServiceExtension(builder.Configuration);
 builder.Services.AddIdentityService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<ITokenService,TokenServices>();
-builder.Services.AddScoped<IBikeRepository,BikesRepository>();
+
 
 builder.Services.AddSwaggerGen();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
-builder.Services.Configure<ApiBehaviorOptions>(Options =>
-             {
-                 Options.InvalidModelStateResponseFactory = actionContext =>
-         {
-             var errors = actionContext.ModelState
-        .Where(e => e.Value.Errors.Count > 0)
-        .SelectMany(x => x.Value.Errors)
-        .Select(x => x.ErrorMessage).ToArray();
+// builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
+// builder.Services.Configure<ApiBehaviorOptions>(Options =>
+//              {
+//                  Options.InvalidModelStateResponseFactory = actionContext =>
+//          {
+//              var errors = actionContext.ModelState
+//         .Where(e => e.Value.Errors.Count > 0)
+//         .SelectMany(x => x.Value.Errors)
+//         .Select(x => x.ErrorMessage).ToArray();
 
-             var errorResponse = new ApiValidationErrorResponse
-             {
-                 Errors = errors
-             };
-             return new BadRequestObjectResult(errorResponse);
+//              var errorResponse = new ApiValidationErrorResponse
+//              {
+//                  Errors = errors
+//              };
+//              return new BadRequestObjectResult(errorResponse);
 
-         };
+//          };
 
-             });
-builder.Services.AddCors(opt =>
-                {
-                    opt.AddPolicy("CorsPolicy", policy =>
-                        {
-                            policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
-                        });
-                });
+//              });
+// builder.Services.AddCors(opt =>
+//                 {
+//                     opt.AddPolicy("CorsPolicy", policy =>
+//                         {
+//                             policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+//                         });
+//                 });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,6 +59,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseAuthorization();
 
 app.MapControllers();
