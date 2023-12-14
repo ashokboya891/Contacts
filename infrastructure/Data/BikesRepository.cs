@@ -29,7 +29,7 @@ namespace Core.services
             return data;
         }
 
-        public async Task<Bikes> GetBikesByIdAsync(int id)
+        public async Task<Bikes?> GetBikesByIdAsync(int id)
         {
            var data=await _bikesDbContext.tblBikes.FindAsync(id);
            return data;

@@ -13,7 +13,6 @@ namespace Core.Interfaces
         Task<Bikes> GetBikesByIdAsync(int id);
          Task<bool> UpdateBikeAsync(Bikes updatedBike);
         Task<bool> DeleteBikeAsync(int id, string bikeName);
-        
-Task<bool> InsertOrUpdateBikeAsync(Bikes bike);
+        Task<bool> InsertOrUpdateBikeAsync(Bikes bike);
     }
 }
