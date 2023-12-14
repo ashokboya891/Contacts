@@ -1,3 +1,4 @@
+using Api.Errors;
 using Api.Extensions;
 using Api.Middleware;
 using Core.Entites.Identity;
@@ -6,6 +7,7 @@ using Core.services;
 using infrastructure.Identity;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,24 @@ builder.Services.AddScoped<IBikeRepository,BikesRepository>();
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
+builder.Services.Configure<ApiBehaviorOptions>(Options =>
+             {
+                 Options.InvalidModelStateResponseFactory = actionContext =>
+         {
+             var errors = actionContext.ModelState
+        .Where(e => e.Value.Errors.Count > 0)
+        .SelectMany(x => x.Value.Errors)
+        .Select(x => x.ErrorMessage).ToArray();
+
+             var errorResponse = new ApiValidationErrorResponse
+             {
+                 Errors = errors
+             };
+             return new BadRequestObjectResult(errorResponse);
+
+         };
+
+             });
 builder.Services.AddCors(opt =>
                 {
                     opt.AddPolicy("CorsPolicy", policy =>
