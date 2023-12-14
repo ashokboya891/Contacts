@@ -1,4 +1,5 @@
 using Api.Extensions;
+using Api.Middleware;
 using Core.Entites.Identity;
 using Core.Interfaces;
 using Core.services;
@@ -29,6 +30,7 @@ builder.Services.AddCors(opt =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleWare>();
 app.UseCors("CorsPolicy");
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 if (app.Environment.IsDevelopment())
