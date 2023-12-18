@@ -9,14 +9,17 @@ using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
 using Api.DTOs;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
 
 namespace Api.Controllers
 {
     public class BikesController:BaseApiController
     {
     private readonly IBikeRepository _bikeRepository;
-    public BikesController(IBikeRepository bikeRepository)
+        private readonly IMapper _mapper;
+    public BikesController(IBikeRepository bikeRepository,IMapper mapper)
     {
+      _mapper = mapper;
       _bikeRepository = bikeRepository;
 
     }
@@ -25,9 +28,9 @@ namespace Api.Controllers
     {
       return "ashok";
     }
-    [Authorize]
+    // [Authorize]
     [HttpGet("AllBikes")]
-    public async Task<ActionResult<IReadOnlyList<Bikes>>> GetBikes()
+    public async Task<ActionResult<IReadOnlyList<BikeDTo>>> GetBikes()
     {
       var bikes = await _bikeRepository.GetBikesAsync();
 
@@ -35,8 +38,11 @@ namespace Api.Controllers
       {
         return NotFound("No bikes found");
       }
-
-      return Ok(bikes);
+     return _mapper.Map<IReadOnlyList<Bikes>, List<BikeDTo>>(bikes);   
+     //mapping helps when we have more things in class and you dont want to show unessary things that you will crate data transfwer object and
+     // mapping profile to map data which is in class to dto so that matched data only receiced to end user through dto 
+    //here above mapping no difference in bikes,bikesdto but difference will apear when we have more things in bikes and less rthings bikessto
+      // return _mapper.Map<Bikes,BikeDTo>(bikes);
     }
  [HttpPut("UpdateBike/{id}")]
     public async Task<ActionResult> UpdateBike( [FromBody] Bikes updatedBike)

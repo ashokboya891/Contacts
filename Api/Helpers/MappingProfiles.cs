@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Api.DTOs;
 using AutoMapper;
+using Core.Entites;
 using Core.Entites.Identity;
 using Core.Interfaces;
 
@@ -13,8 +14,9 @@ namespace Api.Helpers
     {
         public MappingProfiles()
         {
-            CreateMap<DetailsDto,Details>();
-            CreateMap<UserDto, LoginDto>().ReverseMap();
+            CreateMap<Bikes,BikeDTo>();
+            CreateMap<Details,DetailsDto>();
+          
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Core.Entites
     public string  Model{set;get;} 
     public string Country{set;get;}
     public long Price{set;get;}  
+    // public DateOnly Yod{set;get;}=new DateOnly();
 
     }
 }

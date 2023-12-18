@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Api.Errors;
 using Core.Interfaces;
 using Core.services;
+using infrastructure.Data;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

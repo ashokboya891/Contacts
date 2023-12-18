@@ -8,7 +8,7 @@ namespace Api.DTOs
     public class BikeDTo
     {
         
-    public int Id{set;get;}
+    // public int Id{set;get;}
      public string BikeName{set;get;} 
      public string BikeCC{set;get;} 
     public string  Model{set;get;} 

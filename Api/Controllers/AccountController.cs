@@ -80,10 +80,11 @@ namespace Api.Controllers
             var user= await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
             user.Details=_mapper.Map<DetailsDto,Details>(details);
             var result= await _userManager.UpdateAsync(user);
-            if(result.Succeeded) return Ok(_mapper.Map<Details,DetailsDto>(user.Details));
+            if(result.Succeeded) return Ok(user.Details);
             return BadRequest("Problem updating user");
 
         }
+    
      
     }
 }
