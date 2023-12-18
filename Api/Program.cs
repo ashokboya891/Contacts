@@ -1,6 +1,7 @@
 using Api.Errors;
 using Api.Extensions;
 using Api.Middleware;
+using Api.services;
 using Core.Entites.Identity;
 using Core.Interfaces;
 using Core.services;
@@ -18,6 +19,7 @@ builder.Services.AddIdentityService(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddScoped(typeof(PaginationService<>));
 
 builder.Services.AddSwaggerGen();
 // builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());  //after adding mappingprofile file automapper this has to add
